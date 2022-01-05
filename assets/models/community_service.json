@@ -1,0 +1,29 @@
+{
+  "name": "Rumah Sakit",
+  "data": [
+    {
+      "name": "Rumah Sakit Paru Dr. M. Goenawan Partowidigdo",
+      "address": "Rumah Sakit Paru Dr. M. Goenawan Partowidigdo",
+      "phone": "0251-8253630",
+      "fax": "0251-8257662",
+      "email": "info@rspg-cisarua.co.id",
+      "category": "BPJS"
+    },
+    {
+      "name": "Rumah Sakit Jiwa dr. H. Marzoeki Mahdi",
+      "address": "Jalan dr Sumeru Nomor 114 Kota Bogor 16111",
+      "phone": "2518324025",
+      "fax": "2518324025",
+      "email": "rsmm.bgr@gmail.com",
+      "category": "PARTNER"
+    },
+    {
+      "name": "Rumah Sakit EMC Sentul",
+      "address": "Jalan MH Thamrin Kav 57, Bogor 16810",
+      "phone": "021-29672977",
+      "fax": "02129672978",
+      "email": "rsmm.bgr@gmail.com",
+      "category": "TERDEKAT"
+    }
+  ]
+}
