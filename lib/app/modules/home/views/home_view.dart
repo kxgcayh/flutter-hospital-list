@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:valbury_test/app/controllers/community_service_controller_controller.dart';
-import 'package:valbury_test/app/views/views/community_service_container_view.dart';
-
-import '../controllers/home_controller.dart';
+import 'package:flutter/material.dart';
+import 'package:valbury_test/app/modules/clinic/controllers/clinic_controller.dart';
+import 'package:valbury_test/app/modules/home/controllers/home_controller.dart';
+import 'package:valbury_test/app/modules/hospital/controllers/hospital_controller.dart';
+import 'package:valbury_test/app/views/views/instance_dashboard_view.dart';
 
 class HomeView extends GetView<HomeController> {
   @override
@@ -55,7 +55,7 @@ class HomeView extends GetView<HomeController> {
               ),
               SizedBox(width: 12),
             ],
-            expandedHeight: 220.0,
+            expandedHeight: 110.0,
             floating: true,
             pinned: true,
             snap: true,
@@ -110,56 +110,71 @@ class HomeView extends GetView<HomeController> {
           ),
           SliverList(
             delegate: SliverChildListDelegate([
-              GetBuilder<CommunityServiceControllerController>(
-                builder: (controller) {
-                  return Column(
-                    children: [
-                      CommunityServiceContainerView(
-                        communities: controller.filterCommunities(
-                          'Rumah Sakit',
-                        ),
-                      ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
+              GetBuilder<HospitalController>(builder: (controller) {
+                return InstanceDashboardView(
+                  controller.hospitals,
+                  instances: controller.data,
+                  categories: controller.categories,
+                  filter: controller.filter,
+                  onTapFilter: (String f) => controller.updateFilter(f),
+                );
+              }),
+              Column(
+                children: [
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        SizedBox(width: 10),
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            SizedBox(width: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: List.generate(2, (index) {
-                                return Padding(
-                                  padding: const EdgeInsets.only(right: 10),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      border: Border.all(color: Colors.black),
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        horizontal: 80,
-                                        vertical: 40,
+                          children: List.generate(2, (index) {
+                            return Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 12, 10, 12),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey,
+                                      offset: const Offset(
+                                        0.8,
+                                        0.8,
                                       ),
-                                      child: Center(
-                                        child: Text('Banner ${index + 1}'),
-                                      ),
-                                    ),
+                                      blurRadius: 5.0,
+                                      spreadRadius: 0.5,
+                                    ), //BoxShadow
+                                  ],
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 80,
+                                    vertical: 40,
                                   ),
-                                );
-                              }).toList(),
-                            ),
-                          ],
+                                  child: Center(
+                                    child: Text('Banner ${index + 1}'),
+                                  ),
+                                ),
+                              ),
+                            );
+                          }).toList(),
                         ),
-                      ),
-                      CommunityServiceContainerView(
-                        communities: controller.filterCommunities(
-                          'Klinik',
-                        ),
-                      ),
-                    ],
-                  );
-                },
+                      ],
+                    ),
+                  ),
+                ],
               ),
+              GetBuilder<ClinicController>(builder: (controller) {
+                return InstanceDashboardView(
+                  controller.clinics,
+                  instances: controller.data,
+                  categories: controller.categories,
+                  filter: controller.filter,
+                  onTapFilter: (String f) => controller.updateFilter(f),
+                );
+              }),
             ]),
           )
         ],

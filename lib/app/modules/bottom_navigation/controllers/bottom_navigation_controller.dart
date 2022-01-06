@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:valbury_test/app/data/bindings/community_service_binding.dart';
+import 'package:valbury_test/app/data/bindings/instance_binding.dart';
 import 'package:valbury_test/app/modules/clinic/bindings/clinic_binding.dart';
 import 'package:valbury_test/app/modules/home/bindings/home_binding.dart';
 import 'package:valbury_test/app/modules/hospital/bindings/hospital_binding.dart';
@@ -24,7 +24,7 @@ class BottomNavigationController extends GetxController {
   void onClose() {}
 
   void _bindings() {
-    CommunityServiceBinding().dependencies();
+    InstanceBinding().dependencies();
     HomeBinding().dependencies();
     HospitalBinding().dependencies();
     ClinicBinding().dependencies();
