@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 
 class User extends Equatable {
-  int? phone;
-  String? email;
+  int phone;
+  String email;
 
   User({this.phone, this.email});
 
@@ -19,5 +19,5 @@ class User extends Equatable {
   }
 
   @override
-  List<Object?> get props => [phone, email];
+  List<Object> get props => [phone, email];
 }

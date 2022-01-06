@@ -6,8 +6,8 @@ class CommunityService extends Equatable {
     this.data,
   });
 
-  String? name;
-  List<CommunityServiceData>? data;
+  String name;
+  List<CommunityServiceData> data;
 
   factory CommunityService.fromJson(Map<String, dynamic> json) =>
       CommunityService(
@@ -19,12 +19,12 @@ class CommunityService extends Equatable {
   Map<String, dynamic> toJson() => {
         "name": name,
         "data": data != null
-            ? List<dynamic>.from(data!.map((x) => x.toJson()))
+            ? List<dynamic>.from(data.map((x) => x.toJson()))
             : null,
       };
 
   @override
-  List<Object?> get props => [name, data];
+  List<Object> get props => [name, data];
 }
 
 class CommunityServiceData extends Equatable {
@@ -37,12 +37,12 @@ class CommunityServiceData extends Equatable {
     this.category,
   });
 
-  String? name;
-  String? address;
-  String? phone;
-  String? fax;
-  String? email;
-  String? category;
+  String name;
+  String address;
+  String phone;
+  String fax;
+  String email;
+  String category;
 
   factory CommunityServiceData.fromJson(Map<String, dynamic> json) =>
       CommunityServiceData(
@@ -64,5 +64,5 @@ class CommunityServiceData extends Equatable {
       };
 
   @override
-  List<Object?> get props => [name, address, phone, fax, email, category];
+  List<Object> get props => [name, address, phone, fax, email, category];
 }

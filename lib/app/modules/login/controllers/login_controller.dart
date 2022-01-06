@@ -11,7 +11,7 @@ class LoginController extends GetxController {
   final user = User().obs;
   final areFormFilled = false;
 
-  void updateUser(dynamic value, {required LoginInputType type}) {
+  void updateUser(dynamic value, {LoginInputType type}) {
     if (type == LoginInputType.phone) {
       user.value.phone = int.parse(value);
     } else if (type == LoginInputType.email) {
@@ -21,7 +21,7 @@ class LoginController extends GetxController {
 
   void submit() {
     if (loginKey.value.currentState != null) {
-      loginKey.value.currentState!.save();
+      loginKey.value.currentState.save();
       g.write('user', user.value);
       BottomNavigationBinding().dependencies();
       Get.offAll(() => BottomNavigationView());

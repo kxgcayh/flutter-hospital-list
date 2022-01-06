@@ -34,7 +34,7 @@ class LoginView extends GetView<LoginController> {
                         hintText: 'Input Your Phone Number',
                         labelText: 'Phone Number *',
                       ),
-                      onSaved: (String? value) {
+                      onSaved: (String value) {
                         controller.updateUser(value,
                             type: LoginInputType.phone);
                       },
@@ -48,7 +48,7 @@ class LoginView extends GetView<LoginController> {
                         hintText: 'Input Your Email',
                         labelText: 'Email *',
                       ),
-                      onSaved: (String? value) {
+                      onSaved: (String value) {
                         controller.updateUser(
                           value,
                           type: LoginInputType.email,
@@ -61,9 +61,8 @@ class LoginView extends GetView<LoginController> {
                       width: double.infinity,
                       child: ElevatedButton(
                         onPressed: () {
-                          final isValid = controller
-                              .loginKey.value.currentState!
-                              .validate();
+                          final isValid =
+                              controller.loginKey.value.currentState.validate();
                           if (isValid) {
                             Get.defaultDialog(
                               barrierDismissible: false,

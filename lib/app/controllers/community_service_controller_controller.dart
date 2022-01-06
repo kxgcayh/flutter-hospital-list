@@ -82,8 +82,8 @@ class CommunityServiceControllerController extends GetxController {
   List<String> getCategories(CommunityService communityService) {
     List<String> categories = [];
     categories.add('SEMUA');
-    communityService.data!.every((value) {
-      if (!categories.contains(value.category)) categories.add(value.category!);
+    communityService.data.every((value) {
+      if (!categories.contains(value.category)) categories.add(value.category);
       return true;
     });
     return categories;
@@ -102,9 +102,9 @@ class CommunityServiceControllerController extends GetxController {
     } else if (parent.name == 'Klink') {
       tmpFilter = filterClinic;
     }
-    parent.data!.every((data) {
+    parent.data.every((data) {
       if (tmpFilter != 'SEMUA') {
-        if (data.category!.contains(tmpFilter)) {
+        if (data.category.contains(tmpFilter)) {
           if (!temp.contains(data)) temp.add(data);
         }
       } else {

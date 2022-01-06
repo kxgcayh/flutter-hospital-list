@@ -8,7 +8,7 @@ class CommunityServiceContainerView extends GetView {
   final CommunityService communities;
 
   CommunityServiceContainerView({
-    required this.communities,
+    this.communities,
   });
 
   @override
@@ -23,7 +23,7 @@ class CommunityServiceContainerView extends GetView {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  communities.name!,
+                  communities.name,
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w500,
@@ -51,7 +51,7 @@ class CommunityServiceContainerView extends GetView {
                     SizedBox(width: 12),
                     Row(
                       children: controller.getCategories(communities).map((e) {
-                        return _CategorySlider(e, type: communities.name!);
+                        return _CategorySlider(e, type: communities.name);
                       }).toList(),
                     ),
                   ],
@@ -86,14 +86,14 @@ class CommunityServiceContainerView extends GetView {
                             children: [
                               SizedBox(height: 14),
                               Text(
-                                e.name!,
+                                e.name,
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
                                 ),
                               ),
                               Text(
-                                e.address!,
+                                e.address,
                                 maxLines: 2,
                                 overflow: TextOverflow.fade,
                                 style: TextStyle(
@@ -132,8 +132,8 @@ class _CategorySlider extends StatelessWidget {
   final String type;
   const _CategorySlider(
     this.title, {
-    required this.type,
-    Key? key,
+    Key key,
+    this.type,
   }) : super(key: key);
 
   @override
