@@ -73,8 +73,10 @@ class CommunityServiceControllerController extends GetxController {
   void updateFilter(String title, String type) {
     if (type == 'Rumah Sakit') {
       filterRS = title;
+      print('filterRS:$filterRS, filterClinic:$filterClinic, param:$title');
     } else if (type == 'Klinik') {
       filterClinic = title;
+      print('filterRS:$filterRS, filterClinic:$filterClinic, param:$title');
     }
     update();
   }
